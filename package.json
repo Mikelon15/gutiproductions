@@ -1,0 +1,41 @@
+{
+  "name": "gutiproductions",
+  "version": "1.0.0",
+  "description": "portfolio website",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p",
+    "start": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "portfolio",
+    "film",
+    "production",
+    "personal"
+  ],
+  "author": "miguelgutierrez95@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "material-components-web": "^0.40.0",
+    "style-loader": "^0.23.0",
+    "url-loader": "^1.1.1"
+  },
+  "devDependencies": {
+    "@material/button": "^0.40.0",
+    "@material/ripple": "^0.40.0",
+    "autoprefixer": "^9.1.5",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^1.0.0",
+    "extract-loader": "^3.0.0",
+    "file-loader": "^2.0.0",
+    "node-sass": "^4.9.3",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "webpack": "^3.12.0",
+    "webpack-dev-server": "^2.11.3"
+  }
+}

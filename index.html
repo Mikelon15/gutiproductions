@@ -8,36 +8,46 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
+<header class="mdc-top-app-bar ">
+    <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+            <a href="index.html" class="mdc-top-app-bar__title">
+                <img src="./media/logo3.svg" height="65px" width="65px" />
+            </a>
+        </section>
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+            <a href="index.html" class="mdc-tab mdc-tab--active">
+                <span class="mdc-tab__content">
+                    <span class="mdc-tab__text-label">Videos</span>
+                </span>
+                <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                </span>
+                <span class="mdc-tab__ripple"></span>
+            </a>
+            <a href="about.html" class="mdc-tab">
+                <span class="mdc-tab__content">
+                    <span class="mdc-tab__text-label">About</span>
+                </span>
+                <span class="mdc-tab-indicator">
+                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                </span>
+                <span class="mdc-tab__ripple"></span>
+            </a>
+            <a href="resume.html" class="mdc-tab">
+                <span class="mdc-tab__content">
+                    <span class="mdc-tab__text-label">Resume</span>
+                </span>
+                <span class="mdc-tab-indicator">
+                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                </span>
+                <span class="mdc-tab__ripple"></span>
+            </a>
+        </section>
+    </div>
+</header>
+
 <body>
-    <header class="mdc-top-app-bar ">
-        <div class="mdc-top-app-bar__row">
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <a href="index.html" class="mdc-top-app-bar__title">
-                    <img src="./media/logo3.svg" height="65px" width="65px" />
-                </a>
-            </section>
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                <a href="about.html" class="mdc-tab">
-                    <span class="mdc-tab__content">
-                        <span class="mdc-tab__text-label">About</span>
-                    </span>
-                    <span class="mdc-tab-indicator">
-                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                    </span>
-                    <span class="mdc-tab__ripple"></span>
-                </a>
-                <a href="resume.html" class="mdc-tab">
-                    <span class="mdc-tab__content">
-                        <span class="mdc-tab__text-label">Resume</span>
-                    </span>
-                    <span class="mdc-tab-indicator">
-                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                    </span>
-                    <span class="mdc-tab__ripple"></span>
-                </a>
-            </section>
-        </div>
-    </header>
     <div class="mdc-layout-grid">
         <div id="hero-main-section" class="mdc-layout-grid__inner">
             <div class="mdc-layout-grid__cell--span-12">
@@ -51,83 +61,52 @@
     <div class="mdc-layout-grid first-item">
         <div class="mdc-layout-grid__inner">
             <div class="mdc-layout-grid__cell--span-12 videos-cell">
-                <ul class="mdc-image-list my-image-list">
-                    <li class="mdc-image-list__item">
-                        <div class="mdc-image-list__image-aspect-container">
-                            <img class="mdc-image-list__image" onclick="sendToVideo('https://vimeo.com/290168576')" src="./media/725974190_1560x878.webp">
-                            <div class="mdc-image-list__supporting" onclick="sendToVideo('https://vimeo.com/290168576')">
-                                <i class="material-icons" style="font-size: 100px">
-                                    play_circle_outline
-                                </i>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="mdc-image-list__item">
-                        <div class="mdc-image-list__image-aspect-container">
-                            <img class="mdc-image-list__image" onclick="sendToVideo('https://vimeo.com/290168576')" src="./media/731332128_1560x878.webp">
-                            <div class="mdc-image-list__supporting" onclick="sendToVideo('https://vimeo.com/290168576')">
-                                <i class="material-icons" style="font-size: 100px">
-                                    play_circle_outline
-                                </i>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="mdc-image-list__item">
-                        <div class="mdc-image-list__image-aspect-container">
-                            <img class="mdc-image-list__image" onclick="sendToVideo('https://vimeo.com/290168576')" src="./media/731332938_1560x878.webp">
-                            <div class="mdc-image-list__supporting" onclick="sendToVideo('https://vimeo.com/290168576')">
-                                <i class="material-icons" style="font-size: 100px">
-                                    play_circle_outline
-                                </i>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="mdc-image-list__item">
-                        <div class="mdc-image-list__image-aspect-container">
-                            <img class="mdc-image-list__image" onclick="sendToVideo('https://vimeo.com/290168576')" src="./media/596918379_1560x878.webp">
-                            <div class="mdc-image-list__supporting" onclick="sendToVideo('https://vimeo.com/290168576')">
-                                <i class="material-icons" style="font-size: 100px">
-                                    play_circle_outline
-                                </i>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="mdc-image-list__item">
-                        <div class="mdc-image-list__image-aspect-container">
-                            <img class="mdc-image-list__image" onclick="sendToVideo('https://vimeo.com/290168576')" src="./media/620904605_1560x878.webp">
-                            <div class="mdc-image-list__supporting" onclick="sendToVideo('https://vimeo.com/290168576')">
-                                <i class="material-icons" style="font-size: 100px">
-                                    play_circle_outline
-                                </i>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="mdc-image-list__item">
-                        <div class="mdc-image-list__image-aspect-container">
-                            <img class="mdc-image-list__image" onclick="sendToVideo('https://vimeo.com/290168576')" src="./media/637181136_1560x878.webp">
-                            <div class="mdc-image-list__supporting" onclick="sendToVideo('https://vimeo.com/290168576')">
-                                <i class="material-icons" style="font-size: 100px">
-                                    play_circle_outline
-                                </i>
-                            </div>
-                        </div>
-                    </li>
+                <ul id="video-list" class="mdc-image-list">
                 </ul>
+            </div>
         </div>
     </div>
-    <script>
-        function sendToVideo(url) {
-            console.log("redericting")
-            window.location = url
-        }
-    </script>
+    <div id="videoModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe id="video-frame" src="https://player.vimeo.com/video/290168576" width="640" height="360" frameborder="0"
+                webkitallowfullscreen mozallowfullscreen allowfullscreen>
+            </iframe>
+        </div>
+
+    </div>
 </body>
 <footer>
-    <h4>Contact Information</h4>
-    <br>
-    <h5>
-        <!-- Pray to God and he will call upon me. -->
-    </h5>
+    <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell--span-4">
+                <h3>
+                    Angel Gutierrez
+                </h3>
+                <h3>
+                    Filmmaker
+                </h3>
+            </div>
+            <div class="mdc-layout-grid__cell--span-4">
+                <h3>
+                    Angel@GutiProductions.com
+                </h3>
+                <h3>
+                    602-516-5639
+                </h3>
+            </div>
+            <div class="mdc-layout-grid__cell--span-4">
+                <h3>
+                    Phoenix, AZ
+                </h3>
+                <h3>
+                    85042
+                </h3>
+            </div>
+        </div>
+    </div>
 </footer>
 
 </html>

@@ -1,22 +1,15 @@
-$mdc-theme-primary: #fafafa;
-$mdc-theme-secondary: rgb(82, 65, 131);
-$mdc-theme-on-primary: #471c1c;
+$mdc-theme-primary: rgb(255, 250, 235);
+$mdc-theme-secondary: #471c1c;
+$mdc-theme-on-primary: #351111;
 $mdc-theme-on-secondary: #fff3b1;
 $width-height-ratio: (1560/878);
 $gutter-size: 10px;
-$top-app-bar-height: 60px;
+$top-app-bar-height: 80px;
 
 @import "@material/button/mdc-button";
 @import "@material/button/mdc-button";
 @import "@material/layout-grid/mdc-layout-grid";
 @import "@material/image-list/mdc-image-list";
-
-@media screen and (min-width: 960px) {
-    html {
-        margin-left: 0;
-        overflow: auto;
-    }
-}
 
 h1,
 h2,
@@ -32,11 +25,12 @@ h4,
 
 body {
     background-color: $mdc-theme-primary;
-    color: blue;
+    color: $mdc-theme-on-primary;
     margin: 0;
     padding: 0;
     overflow-x: hidden
 }
+
 
 @import "@material/tab-bar/mdc-tab-bar";
 @import "@material/tab-scroller/mdc-tab-scroller";
@@ -49,18 +43,31 @@ body {
     @include mdc-tab-indicator-underline-color($mdc-theme-on-primary);
 }
 
+.mdc-top-app-bar__row {
+    height: $top-app-bar-height;
+}
 .mdc-top-app-bar {
     @include mdc-top-app-bar-fill-color($mdc-theme-primary);
     @include mdc-top-app-bar-ink-color($mdc-theme-on-primary);
     height: $top-app-bar-height;
     // box-shadow: 0px 1px 5px 0px #b7b7b7;
 }
+body.modal-open {
+    overflow: hidden;
+    // position: fixed;
+}
+
+header.modal-open {
+    overflow: hidden;
+    display: none;
+}
 
 .mdc-top-app-bar__section {
     padding-bottom: 0px;
     padding-top: 0px;
 }
-.mdc-top-app-bar__section--align-end{
+
+.mdc-top-app-bar__section--align-end {
     width: 100px;
 }
 
@@ -80,6 +87,12 @@ body {
 #hero-main-text {
     padding: 150px 0 150px 0;
     text-align: center;
+    background-image: url(http://www.hurricanefenceco.com/wp-content/uploads/2015/09/ArizonaDesert.jpg);
+    background-position: top;
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-color: #172b6780;
+    color: #ffef99;
 }
 
 .first-item {
@@ -106,37 +119,42 @@ footer {
     align-items: center;
 }
 
-.my-image-list {
+#video-list {
     @include mdc-image-list-standard-columns(2, $gutter-size);
     @include mdc-image-list-aspect($width-height-ratio);
     // @include mdc-image-list-standard-columns(5);
 }
+
 @media (max-width: 599px) {
     .my-image-list {
         @include mdc-image-list-standard-columns(1);
     }
 }
-.mdc-image-list__image-aspect-container{
-    position: relative;   
+
+.mdc-image-list__image-aspect-container {
+    position: relative;
 }
-.mdc-image-list__image{
-opacity: 1;
-display: block;
-width: 100%;
-height: auto;
-transition: .5s ease;
-backface-visibility: hidden;
+
+.mdc-image-list__image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
 }
-.mdc-image-list__supporting{
-transition: .5s ease;
-opacity: 0;
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
--ms-transform: translate(-50%, -50%);
-text-align: center;
+
+.mdc-image-list__supporting {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
 }
+
 .mdc-image-list__image-aspect-container:hover .mdc-image-list__image {
     opacity: 0.3;
     cursor: pointer;
@@ -146,6 +164,58 @@ text-align: center;
     opacity: 1;
     cursor: pointer;
 }
+
 .material-icons {
     font-size: 50px
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 10px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100vh;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.75);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: none;
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+    height: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #d4d4d4;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(250, 250, 250);
+    text-decoration: none;
+    cursor: pointer;
+}
+#play-icon{
+    font-size: 100px;
 }

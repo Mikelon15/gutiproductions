@@ -5,7 +5,7 @@ import {
 import {
     MDCTopAppBar
 } from '@material/top-app-bar/index';
-// import * as Player from '@vimeo/player';
+import Player from '@vimeo/player';
 
 // Instantiation
 const topAppBarElement = document.querySelector('.mdc-top-app-bar');
@@ -56,34 +56,56 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     closeModal();
+    
+    player.destroy().then(function() {
+        // the player was destroyed
+    }).catch(function(error) {
+        // an error occurred
+    });
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
         closeModal();
+        player.pause();
     }
 }
+
 function openModal(){
     bodyClassString = body.className;
     body.className += " modal-open";
     head.style = "top: -128px;";
     modal.style.display = "block";
 }
+
 function closeModal(){
     body.className = bodyClassString;
     modal.style.display = "none";
 }
-
+    var player;
 function loadVideos() {
     let videoList = document.getElementById('video-list');
     let itemElem;
     videos.forEach(vid => {
-        // add video script to head
-        // initVideo(vid.url); 
         // make item <li>. add event callback, and append to list
         itemElem = getNewItem(vid.url, vid.image);
-        itemElem.onclick = () => sendToVideo(vid.url);
+        // window.span
+        itemElem.onclick = () => {
+            let cont = document.getElementById('videoContainer');
+            let w = (window.innerWidth*.6).toFixed(0);
+            console.log(w)
+            sendToVideo(vid.url);
+
+            player = new Player('videoContainer', {
+                id: 19231868,
+                responsive: true
+            });
+            
+            player.on('play', function() {
+                console.log('played the video!');
+            });
+        };
         videoList.append(itemElem);
     })
 }
@@ -92,17 +114,6 @@ var videoFrame = document.getElementById('video-frame');
 
 function sendToVideo(videoUrl) {
     openModal();
-}
-// This function puts the video on the page
-function embedVideo(video) {
-    videoFrame.innerHTML = unescape(video.html);
-}
-// This function loads the data from Vimeo
-function initVideo(url) {
-    let js = document.createElement('script');
-    js.setAttribute('type', 'text/javascript');
-    js.setAttribute('src', url);
-    document.getElementsByTagName('head').item(0).appendChild(js);
 }
 
 loadVideos();

@@ -5,6 +5,8 @@ import {
 import {
     MDCTopAppBar
 } from '@material/top-app-bar/index';
+import {MDCLinearProgress, MDCLinearProgressFoundation} from '@material/linear-progress/index';
+
 import Player from '@vimeo/player';
 
 // Instantiation
@@ -15,15 +17,15 @@ const topAppBar = new MDCTopAppBar(topAppBarElement);
 const videos = [
     {
         url: '297595106',
-        image: ''
+        image: './media/735316019_780x439.webp'
     },
     {
         url: '297594495',
-        image: ''
+        image: './media/735316019_780x439.webp'
     },
     {
         url: '297595167',
-        image: ''
+        image: './media/735315896_780x439.webp'
     },
     {
         url: '290168576',
@@ -70,12 +72,12 @@ function getNewItem(url, media) {
     iconElem.id = "play-icon";
     imageElem.src = media;
     iconElem.innerText = "play_circle_outline";
-    
+
     itemElem.appendChild(contElem);
     contElem.appendChild(imageElem);
     contElem.appendChild(suportElem);
     suportElem.appendChild(iconElem);
-    
+
     return itemElem;
 }
 
@@ -89,11 +91,11 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     closeModal();
-    
-    player.destroy().then(function() {
+
+    player.destroy().then(function () {
         // the player was destroyed
         document.getElementById('videoContainer').innerHTML = '';
-    }).catch(function(error) {
+    }).catch(function (error) {
         // an error occurred
     });
 }
@@ -106,35 +108,43 @@ window.onclick = function (event) {
     }
 }
 
-function openModal(){
+function openModal() {
     bodyClassString = body.className;
     body.className += " modal-open";
     head.style = "top: -128px;";
     modal.style.display = "block";
 }
 
-function closeModal(){
+function closeModal() {
     body.className = bodyClassString;
     modal.style.display = "none";
 }
-    var player;
+
+var player;
+var isLoading = document.getElementById('isLoading');
+
 function loadVideos() {
     let videoList = document.getElementById('video-list');
     let itemElem;
     videos.forEach(vid => {
         // make item <li>. add event callback, and append to list
         itemElem = getNewItem(vid.url, vid.image);
-        // window.span
         itemElem.onclick = () => {
             sendToVideo(vid.url);
             player = new Player('videoContainer', {
                 id: vid.url,
                 responsive: true
             });
+            player.ready().then(() => {
+                isLoading = false;
+                isLoading.style = 'display: none;'
+                modal.innerHTML = "";
+            });
         };
         videoList.append(itemElem);
     })
 }
+var determinates = document.querySelectorAll('.mdc-linear-progress');
 
 var videoFrame = document.getElementById('video-frame');
 

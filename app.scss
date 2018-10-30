@@ -48,12 +48,14 @@ body {
 .mdc-top-app-bar__row {
     height: $top-app-bar-height;
 }
+
 .mdc-top-app-bar {
     @include mdc-top-app-bar-fill-color($mdc-theme-primary);
     @include mdc-top-app-bar-ink-color($mdc-theme-on-primary);
     height: $top-app-bar-height;
     // box-shadow: 0px 1px 5px 0px #b7b7b7;
 }
+
 body.modal-open {
     overflow: hidden;
     // position: fixed;
@@ -221,6 +223,119 @@ footer {
     text-decoration: none;
     cursor: pointer;
 }
-#play-icon{
+
+#play-icon {
     font-size: 100px;
+}
+
+
+// animation - progress
+$colors: (primary: #fff3b1,
+secondary: #fff3b1,
+danger: #f53d3d,
+light: #351111,
+dark: #351111);
+$mdc-theme-primary: rgb(255, 250, 235);
+$mdc-theme-secondary: #471c1c;
+$mdc-theme-on-primary: #351111;
+$mdc-theme-on-secondary: #fff3b1;
+
+.progress,
+progress[value] {
+    width: 100%;
+    border: none;
+    margin: 5px 0;
+    height: 5px;
+    display: block;
+    appearance: none;
+    -webkit-appearance: none;
+
+    &::-webkit-progress-bar {
+        background-color: none;
+    }
+
+    &::-webkit-progress-value {
+        background-color: map-get($colors, primary);
+    }
+}
+
+.progress-materializecss {
+    margin: 5px 0;
+    position: relative;
+    height: 4px;
+    display: block;
+    width: 100%;
+    background-color: none;
+    border-radius: 2px;
+    margin: 0.5rem 0 1rem 0;
+    overflow: hidden;
+
+    .indeterminate {
+        background-color: map-get($colors, primary);
+
+        &:before {
+            content: '';
+            position: absolute;
+            background-color: inherit;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            will-change: left, right;
+            animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            background-color: inherit;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            will-change: left, right;
+            animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+            animation-delay: 1.15s;
+        }
+    }
+}
+
+@keyframes indeterminate {
+    0% {
+        left: -35%;
+        right: 100%;
+    }
+
+    60% {
+        left: 100%;
+        right: -90%;
+    }
+
+    100% {
+        left: 100%;
+        right: -90%;
+    }
+}
+
+@keyframes indeterminate-short {
+    0% {
+        left: -200%;
+        right: 100%;
+    }
+
+    60% {
+        left: 107%;
+        right: -8%;
+    }
+
+    100% {
+        left: 107%;
+        right: -8%;
+    }
+}
+
+.progress-container {
+    position: absolute;
+    width: 50vw;
+    top: 50vh;
+    left: 50vh;
+    margin-left: -12w;
 }

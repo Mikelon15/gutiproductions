@@ -12,10 +12,43 @@ const topAppBarElement = document.querySelector('.mdc-top-app-bar');
 const topAppBar = new MDCTopAppBar(topAppBarElement);
 
 
-const videos = [{
-        url: 'https://vimeo.com/290168576',
-        image: "./media/725974190_1560x878.webp"
+const videos = [
+    {
+        url: '297595106',
+        image: ''
     },
+    {
+        url: '297594495',
+        image: ''
+    },
+    {
+        url: '297595167',
+        image: ''
+    },
+    {
+        url: '290168576',
+        image: './media/725974190_1560x878.webp'
+    },
+    {
+        url: '219431388',
+        image: './media/731332128_1560x878.webp'
+    },
+    {
+        url: '212320366',
+        image: './media/731332938_1560x878.webp'
+    },
+    {
+        url: '205997233',
+        image: './media/620904605_1560x878.webp'
+    },
+    {
+        url: '192168791',
+        image: './media/731333844_1560x878.webp'
+    },
+    {
+        url: '187236243',
+        image: './media/596918379_1560x878.webp'
+    }
 ]
 
 
@@ -59,6 +92,7 @@ span.onclick = function () {
     
     player.destroy().then(function() {
         // the player was destroyed
+        document.getElementById('videoContainer').innerHTML = '';
     }).catch(function(error) {
         // an error occurred
     });
@@ -92,18 +126,10 @@ function loadVideos() {
         itemElem = getNewItem(vid.url, vid.image);
         // window.span
         itemElem.onclick = () => {
-            let cont = document.getElementById('videoContainer');
-            let w = (window.innerWidth*.6).toFixed(0);
-            console.log(w)
             sendToVideo(vid.url);
-
             player = new Player('videoContainer', {
-                id: 19231868,
+                id: vid.url,
                 responsive: true
-            });
-            
-            player.on('play', function() {
-                console.log('played the video!');
             });
         };
         videoList.append(itemElem);

@@ -189,7 +189,7 @@ footer {
     /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
     /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.9);
     /* Black w/ opacity */
 }
 
@@ -198,16 +198,19 @@ footer {
     background-color: none;
     margin: auto;
     padding: 20px;
-    width: 80%;
+    width: 75%;
     height: 80%;
 }
 
 /* The Close Button */
 .close {
-    color: #d4d4d4;
+    padding: 0 25px 0 0;
+    right: 0;
+    color: #c5c4c4;
     float: right;
-    font-size: 28px;
+    font-size: 48px;
     font-weight: bold;
+    z-index: 1;
 }
 
 .close:hover,

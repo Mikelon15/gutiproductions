@@ -1,14 +1,7 @@
 import Player from '@vimeo/player';
-import {
-    MDCRipple
-} from '@material/ripple/index';
-import {
-    MDCTopAppBar
-} from '@material/top-app-bar/index';
-import {
-    MDCLinearProgress,
-    MDCLinearProgressFoundation
-} from '@material/linear-progress/index';
+import { MDCRipple } from '@material/ripple/index';
+import { MDCTopAppBar } from '@material/top-app-bar/index';
+import { MDCLinearProgress, MDCLinearProgressFoundation } from '@material/linear-progress/index';
 
 // Instantiation
 const topAppBarElement = document.querySelector('.mdc-top-app-bar');

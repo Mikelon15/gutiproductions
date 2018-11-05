@@ -150,4 +150,5 @@ function main() {
         videoList.append(itemElem);
     })
 }
+// run only if in index
 main();

@@ -91,8 +91,8 @@ header.modal-open {
 #hero-main-text {
     padding: 150px 0 150px 0;
     text-align: center;
-    background-image: url(http://www.hurricanefenceco.com/wp-content/uploads/2015/09/ArizonaDesert.jpg);
-    background-position: top;
+    background-image: url(./media/hero3.jpg);
+    background-position: center;
     background-size: cover;
     background-blend-mode: overlay;
     background-color: #172b6780;
@@ -336,6 +336,16 @@ progress[value] {
     position: absolute;
     width: 50vw;
     top: 50vh;
-    left: 50vh;
-    margin-left: -12w;
+    left: 25vw;
+}
+
+.profile {
+    width: 100%;
+}
+@media screen {
+    @media (max-width: 800px) {
+        .mdc-top-app-bar__section--align-end {
+            display: none;
+        }
+    }
 }

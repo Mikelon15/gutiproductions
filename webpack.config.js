@@ -80,6 +80,7 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 query: {
+                    presets: ["@babel/preset-env"],
                     plugins: ['transform-object-assign']
                 },
             }

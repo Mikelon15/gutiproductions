@@ -1,62 +1,19 @@
-import {
-    MDCRipple
-} from '@material/ripple/index';
-
-import {
-    MDCTopAppBar
-} from '@material/top-app-bar/index';
-import {MDCLinearProgress, MDCLinearProgressFoundation} from '@material/linear-progress/index';
-
 import Player from '@vimeo/player';
+import { MDCRipple } from '@material/ripple/index';
+import { MDCTopAppBar } from '@material/top-app-bar/index';
+import { MDCLinearProgress, MDCLinearProgressFoundation } from '@material/linear-progress/index';
 
 // Instantiation
 const topAppBarElement = document.querySelector('.mdc-top-app-bar');
 const topAppBar = new MDCTopAppBar(topAppBarElement);
+import * as videosToImport from './videos.json';
 
-
-const videos = [
-    {
-        url: '297595106',
-        image: './media/735316019_780x439.webp'
-    },
-    {
-        url: '297594495',
-        image: './media/735316019_780x439.webp'
-    },
-    {
-        url: '297595167',
-        image: './media/735315896_780x439.webp'
-    },
-    {
-        url: '290168576',
-        image: './media/725974190_1560x878.webp'
-    },
-    {
-        url: '219431388',
-        image: './media/731332128_1560x878.webp'
-    },
-    {
-        url: '212320366',
-        image: './media/731332938_1560x878.webp'
-    },
-    {
-        url: '205997233',
-        image: './media/620904605_1560x878.webp'
-    },
-    {
-        url: '192168791',
-        image: './media/731333844_1560x878.webp'
-    },
-    {
-        url: '187236243',
-        image: './media/596918379_1560x878.webp'
-    }
-]
-
+var videos = videosToImport.list;
 
 function newElem(type) {
     return document.createElement(type)
 }
+
 function getNewItem(url, media) {
     let itemElem = newElem('li');
     let contElem = newElem('div');
@@ -81,35 +38,76 @@ function getNewItem(url, media) {
     return itemElem;
 }
 
-var bodyClassString = ""
+var player;
+var selectedVideo;
 var body = document.getElementsByTagName('body')[0];
+var bodyClassString = body.className;
 var head = document.getElementsByTagName('header')[0];
 var modal = document.getElementById('videoModal');
+var modalContainer = document.getElementById('videoContainer');
 var span = document.getElementsByClassName("close")[0];
+var isLoading = document.getElementById('isLoading');
 
-
+/*
+/ EVENT LISTENERS
+/ 
+*/
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     closeModal();
-
-    player.destroy().then(function () {
-        // the player was destroyed
-        document.getElementById('videoContainer').innerHTML = '';
-    }).catch(function (error) {
-        // an error occurred
-    });
+    pausePlayer();
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
         closeModal();
-        player.pause();
+        pausePlayer();
     }
 }
 
+/*
+/
+/   PLAYER ACTIONS
+/
+*/
+function destroyPlayer() {
+    player.destroy().then(function () {
+        // the player was destroyed
+        document.getElementById('videoContainer').innerHTML = '';
+        isLoading.style = 'display: block;'
+    }).catch(function (error) {
+        // an error occurred
+    });
+}
+
+function pausePlayer() {
+    player.pause();
+}
+
+function startNewVideo(vid) {
+    setLoading(true);
+    if(selectedVideo){
+        selectedVideo = null;
+        destroyPlayer();
+    }
+    openModal();
+    player = new Player('videoContainer', {
+        id: vid.url,
+        responsive: true
+    });
+    player.ready().then(() => {
+        selectedVideo = vid.url;
+        setLoading(false);
+        openModalContainer();
+    });
+}
+/*
+/
+/   MODAL ACTIONS
+/
+*/
 function openModal() {
-    bodyClassString = body.className;
     body.className += " modal-open";
     head.style = "top: -128px;";
     modal.style.display = "block";
@@ -119,37 +117,38 @@ function closeModal() {
     body.className = bodyClassString;
     modal.style.display = "none";
 }
+function openModalContainer() {
+    modalContainer.style.display = "block";
+}
 
-var player;
-var isLoading = document.getElementById('isLoading');
-
-function loadVideos() {
+function closeModalContainer() {
+    modalContainer.style.display = "none";
+}
+function setLoading(val) {
+    if (val)
+        isLoading.style = 'display: block;';
+    else
+        isLoading.style = 'display: none;';
+}
+/*
+/
+/   MAIN FUNCTION TO START SCRIPT
+/
+*/
+function main() {
     let videoList = document.getElementById('video-list');
     let itemElem;
+    closeModalContainer();
     videos.forEach(vid => {
         // make item <li>. add event callback, and append to list
         itemElem = getNewItem(vid.url, vid.image);
         itemElem.onclick = () => {
-            sendToVideo(vid.url);
-            player = new Player('videoContainer', {
-                id: vid.url,
-                responsive: true
-            });
-            player.ready().then(() => {
-                isLoading = false;
-                isLoading.style = 'display: none;'
-                modal.innerHTML = "";
-            });
-        };
+            openModal();
+            if (!selectedVideo || selectedVideo != vid.url)
+                startNewVideo(vid);
+        }
         videoList.append(itemElem);
     })
 }
-var determinates = document.querySelectorAll('.mdc-linear-progress');
-
-var videoFrame = document.getElementById('video-frame');
-
-function sendToVideo(videoUrl) {
-    openModal();
-}
-
-loadVideos();
+// run only if in index
+main();

@@ -3,13 +3,14 @@
 
 <head>
     <title>Angel Gutierrez</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bundle.css">
     <script src="bundle.js" async></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
-<header class="mdc-top-app-bar ">
-    <div class="mdc-top-app-bar__row">
+<header class="mdc-top-app-bar">
+    <div id="topNav" class="mdc-top-app-bar__row">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
             <a href="index.html" class="mdc-top-app-bar__title">
                 <img src="./media/logo3.svg" height="65px" width="65px" />
@@ -44,6 +45,7 @@
                 <span class="mdc-tab__ripple"></span>
             </a>
         </section>
+        <a href="javascript:void(0);" class="toggleNav" class="icon">&#9776;</a>
     </div>
 </header>
 
@@ -88,7 +90,9 @@
 <footer>
     <div class="mdc-layout-grid">
         <div class="mdc-layout-grid__inner">
-            <div class="mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-8-tablet">
+            <div class="mdc-layout-grid__cell--span-3-desktop 
+                        mdc-layout-grid__cell--span-8-tablet
+                        mdc-layout-grid__cell--span-8-phone">
                 <h3>
                     Angel Gutierrez
                 </h3>
@@ -96,7 +100,8 @@
                     Filmmaker
                 </h3>
             </div>
-            <div class="mdc-layout-grid__cell--span-5-desktop mdc-layout-grid__cell--span-8-tablet">
+            <div class="mdc-layout-grid__cell--span-5-desktop mdc-layout-grid__cell--span-8-tablet
+                        mdc-layout-grid__cell--span-8-phone">
                 <h3>
                     Angel@GutiProductions.com
                 </h3>
@@ -104,7 +109,8 @@
                     602-516-5639
                 </h3>
             </div>
-            <div class="mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet">
+            <div class="mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet
+            mdc-layout-grid__cell--span-8-phone">
                 <h3>
                     Phoenix, AZ
                 </h3>

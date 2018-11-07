@@ -150,16 +150,6 @@ function main() {
         videoList.append(itemElem);
     })
 }
-let onResponsiveToggle = () => {
-    var x = document.getElementById("topNav");
-    if (x.className === "mdc-top-app-bar__row") {
-        x.className += " responsive";
-    } else {
-        x.className = "mdc-top-app-bar__row";
-    }
-    console.log("toggle responsive");
-    document.getElementsByClassName("toggleNav")[0].onclick = onResponsiveToggle;
-}
-document.getElementsByClassName("toggleNav")[0].onclick = onResponsiveToggle;
+
 // run only if in index
 main();

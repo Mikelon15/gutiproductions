@@ -354,8 +354,10 @@ progress[value] {
 
 a.toggleNav {
     text-decoration: none;
-    text-decoration-color: $mdc-theme-secondary;
     font-size: 28pt;
+}
+.toggleNav {
+    display: none;
 }
 
 @media screen {
@@ -367,6 +369,9 @@ a.toggleNav {
         .mdc-top-app-bar__row .toggleNav {
             float: right;
             display: block;
+            color: $mdc-theme-secondary;
+            border-radius: 10px;
+            margin: 5px;
         }
 
     }
@@ -385,9 +390,11 @@ a.toggleNav {
 
         .mdc-top-app-bar__row.responsive .toggleNav {
             position: absolute;
-            color: $mdc-theme-secondary;
+            color: $mdc-theme-primary;
+            background: $mdc-theme-on-primary;
             right: 0;
             top: 0;
+            
         }
 
         .mdc-top-app-bar__row.responsive a.mdc-tab {

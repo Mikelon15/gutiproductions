@@ -5,11 +5,12 @@
     <title>Angel Gutierrez</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bundle.css">
+    <script src="main.js" async></script>
 </head>
 
 <body>
     <header class="mdc-top-app-bar ">
-        <div class="mdc-top-app-bar__row">
+        <div id="topNav" class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                 <a href="index.html" class="mdc-top-app-bar__title">
                     <img src="./media/logo3.svg" height="65px" width="65px" />
@@ -44,6 +45,7 @@
                     <span class="mdc-tab__ripple"></span>
                 </a>
             </section>
+            <a href="javascript:void(0);" class="toggleNav" onclick="onResponsiveToggle()" class="icon">&#9776;</a>
         </div>
     </header>
     <div class="mdc-layout-grid first-item">

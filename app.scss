@@ -22,7 +22,8 @@ h2,
 h3,
 h4,
 .mdc-tab__text-label {
-    font-family: 'Courier New', Courier, monospace
+    font-family: 'Strait',
+        sans-serif;
 }
 
 .mdc-tab--active .mdc-tab__text-label {
@@ -356,6 +357,7 @@ a.toggleNav {
     text-decoration: none;
     font-size: 28pt;
 }
+
 .toggleNav {
     display: none;
 }
@@ -380,6 +382,7 @@ a.toggleNav {
         .mdc-top-app-bar__row.responsive {
             display: block;
         }
+
         .mdc-top-app-bar__row.responsive .mdc-top-app-bar__section--align-end {
             position: relative;
             display: block;
@@ -394,7 +397,7 @@ a.toggleNav {
             background: $mdc-theme-on-primary;
             right: 0;
             top: 0;
-            
+
         }
 
         .mdc-top-app-bar__row.responsive a.mdc-tab {
@@ -406,4 +409,21 @@ a.toggleNav {
             padding: 20px;
         }
     }
+}
+
+.subtitle {
+    padding: 0;
+    font-style: italic;
+    font-size: small;
+    margin-top: 5px;
+}
+
+.header {
+    margin-bottom: 0;
+}
+.about-text h3{
+    font-weight: 500;
+}
+.footer {
+    text-align: center;
 }
